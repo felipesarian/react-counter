@@ -1,7 +1,7 @@
 function TextInput({name}) {
     return(
         <>
-            <input type="text" name={name} id={name} placeholder={name}/>    
+            <input type={name==='password' ? 'password' : 'text'} name={name} id={name} placeholder={name} className='input-style'/>    
         </>
     )
 }
