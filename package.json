@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "firebase": "^8.2.8",
+    "history": "^4.10.1",
+    "react-router-dom": "^5.2.0"
+  }
+}

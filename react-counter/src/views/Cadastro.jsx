@@ -1,8 +1,7 @@
 import TextInput from "../components/TextInput";
 import Button from '../components/Button';
-import { Link } from 'react-router-dom';
 
-function Login(){
+function Cadastro(){
 
     function callback(){
         console.log("click")
@@ -11,16 +10,15 @@ function Login(){
     return(
         <>
             <div className='form'>
-                <h2>Login</h2>
+                <h2>Cadastro</h2>
                 <TextInput name='username'/>
+                <TextInput name='email'/>
                 <TextInput name='password'/>
-                <Button text='Entrar' callback={callback}/>
-                <Link to='/cadastro'>
-                    <Button text='Cadastrar-se' callback={()=>{}}/>
-                </Link>
+                <TextInput name='confirm password'/>
+                <Button text='Cadastrar' callback={callback}/>
             </div>
         </> 
     )
 }
 
-export default Login;
+export default Cadastro
