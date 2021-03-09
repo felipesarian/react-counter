@@ -1,5 +1,6 @@
 import TextInput from "../components/TextInput";
 import Button from '../components/Button';
+import {getAllUsers, testConn} from "../services/firebaseService"
 
 function Cadastro(){
 
@@ -15,7 +16,7 @@ function Cadastro(){
                 <TextInput name='email'/>
                 <TextInput name='password'/>
                 <TextInput name='confirm password'/>
-                <Button text='Cadastrar' callback={callback}/>
+                <Button text='Cadastrar' callback={getAllUsers}/>
             </div>
         </> 
     )
