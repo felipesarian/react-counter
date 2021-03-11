@@ -13,11 +13,25 @@ var firebaseConfig = {
 
   const db = firebase.firestore()
 
-export function testConn() {
-    console.log(db)
-}
+// export function testConn() {
+//     console.log(db)
+// }
 
 export async function getAllUsers(){     
-    const snapshot = await db.collection('users').get()     
-    return snapshot.docs.map( (doc) => console.log(doc.data())); 
+
+    try {
+        const snapshot = await db.collection('users').get()     
+        return snapshot.docs.map( (doc) => console.log(doc.data())); 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function createUser(user){
+    try {
+        const created = await db.collection("users").add(user)   
+        console.log(created)
+    } catch (error) {
+        console.log("Error writing document: ", error);
+    }
 }
