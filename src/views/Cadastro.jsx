@@ -1,22 +1,38 @@
 import TextInput from "../components/TextInput";
 import Button from '../components/Button';
-import {getAllUsers, createUser} from "../services/firebaseService"
+import {createUser, verifyEmail} from "../services/firebaseService"
 import React, {useState} from 'react'
+import { useHistory } from "react-router-dom";
 
 function Cadastro(){
-
+    const history = useHistory();
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+    async function validateUser(){
+        const emailExists = await verifyEmail(email)
+        if(emailExists){
+            alert('Este email já esta cadastrado')
+        } else{
+            singUp()
+        }
+    }
+
     async function singUp(){
         if(password === confirmPassword){
-            await createUser({
-                email: email,
-                name: username,
-                password: password
-            })
+            try {
+                await createUser({
+                    email: email,
+                    name: username,
+                    password: password                 
+                }) 
+                history.push('/')
+            } catch (error) {
+                console.error(error)
+            }
+           
         } else{
             alert('As senhas não coincidem')
         }
@@ -31,7 +47,7 @@ function Cadastro(){
                 <TextInput name='email' onChangeCallback={setEmail}/>
                 <TextInput name='password' onChangeCallback={setPassword}/>
                 <TextInput name='confirm password' onChangeCallback={setConfirmPassword}/>
-                <Button text='Cadastrar' callback={singUp}/>
+                <Button text='Cadastrar' callback={validateUser}/>
             </div>
         </> 
     )

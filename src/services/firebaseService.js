@@ -17,11 +17,39 @@ var firebaseConfig = {
 //     console.log(db)
 // }
 
-export async function getAllUsers(){     
+export async function verifyEmail(email){     
 
     try {
-        const snapshot = await db.collection('users').get()     
-        return snapshot.docs.map( (doc) => console.log(doc.data())); 
+        const snapshot = await db.collection('users').get()   
+        let emailExists = false  
+        snapshot.docs.map((doc) => {
+            if(doc.data().email === email) {
+                emailExists = true
+            }
+        }) 
+        return emailExists
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function verifyUser(username, password){     
+
+    try {
+        const snapshot = await db.collection('users').get()   
+        var userExists, mustLogin = false
+        snapshot.docs.map((doc) => {
+            if(doc.data().name === username) {
+                userExists = true
+                if(doc.data().password === password) {
+                    mustLogin = true
+                }
+            }
+        })
+        if(!userExists || !mustLogin){
+            alert('Usuário ou senha incorretos')
+        } 
+        return mustLogin
     } catch (error) {
         console.log(error)
     }
