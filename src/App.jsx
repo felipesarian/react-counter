@@ -9,11 +9,8 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <div className='login-container'>
-            <Route exact path='/'><Login/></Route>
-            <Route  path='/cadastro'><Cadastro/></Route>
-          </div>
-
+          <Route exact path='/'><Login/></Route>
+          <Route  path='/cadastro'><Cadastro/></Route>
           <Route  path='/home'><Counter/></Route>
         </Switch>
       </Router>

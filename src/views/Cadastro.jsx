@@ -41,13 +41,16 @@ function Cadastro(){
 
     return(
         <>
-            <div className='form'>
-                <h2>Cadastro</h2>
-                <TextInput name='username' onChangeCallback={setUsername}/>
-                <TextInput name='email' onChangeCallback={setEmail}/>
-                <TextInput name='password' onChangeCallback={setPassword}/>
-                <TextInput name='confirm password' onChangeCallback={setConfirmPassword}/>
-                <Button text='Cadastrar' callback={validateUser}/>
+            <div className='login-container'>
+
+                <div className='form'>
+                    <h2>Cadastro</h2>
+                    <TextInput name='username' onChangeCallback={setUsername}/>
+                    <TextInput name='email' onChangeCallback={setEmail}/>
+                    <TextInput name='password' onChangeCallback={setPassword}/>
+                    <TextInput name='confirm password' onChangeCallback={setConfirmPassword}/>
+                    <Button text='Cadastrar' callback={validateUser}/>
+                </div>
             </div>
         </> 
     )

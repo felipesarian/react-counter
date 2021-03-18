@@ -25,14 +25,17 @@ function Login(){
 
     return(
         <>
-            <div className='form'>
-                <h2>Login</h2>
-                <TextInput name='username' onChangeCallback={setUsername}/>
-                <TextInput name='password' onChangeCallback={setPassword}/>
-                <Button text='Entrar' callback={login}/>
-                <Link to='/cadastro'>
-                    <Button text='Cadastrar-se' callback={()=>{}}/>
-                </Link>
+            <div className='login-container'>
+
+                <div className='form'>
+                    <h2>Login</h2>
+                    <TextInput name='username' onChangeCallback={setUsername}/>
+                    <TextInput name='password' onChangeCallback={setPassword}/>
+                    <Button text='Entrar' callback={login}/>
+                    <Link to='/cadastro'>
+                        <Button text='Cadastrar-se' callback={()=>{}}/>
+                    </Link>
+                </div>
             </div>
         </> 
     )
